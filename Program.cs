@@ -7,44 +7,21 @@ namespace cs_go
     {
         static void Main(string[] args)
         {
-            int stackSize = 0;
-            while (true){
-                try {
-                System.Console.WriteLine("Please enter the size of the stack: ");
-                stackSize = Convert.ToInt32(System.Console.ReadLine());
-                } catch (System.FormatException) {
-                    System.Console.WriteLine("Wrong number!");
-                    continue;
-                }
-                break;
-            }
-            Stack stackList = new Stack(stackSize);
-            for (int item = 0; item < 100; item ++ ){
-                try {
-                    stackList.push(item);
-                } catch (System.StackOverflowException) {
-                    System.Console.WriteLine("Stack Owerflow!");
-                    break;
-                }
-            }
+            Start start = new Start();
+            Stack myStack = start.Init();
+            start.Pushes();
+            System.Console.WriteLine();
             System.Console.WriteLine("Reading from stack:");
-            while (true)
-            {
-                try {
-                    System.Console.WriteLine(stackList.pop());
-                } catch (System.ArgumentOutOfRangeException) 
-                {
-                    System.Console.WriteLine("The stack is empty!");
-                    break;
-                }
-            }
+            System.Console.WriteLine();
+            start.Pops();
         }
 
         class Start{
 
+            private Stack myStack;
             public Stack Init()
             {
-                int stackSize = 0;
+                int stackSize;
                 while (true){
                     try {
                     System.Console.WriteLine("Please enter the size of the stack: ");
@@ -55,9 +32,37 @@ namespace cs_go
                     }
                     break;
                 }
-                return new Stack(stackSize);
+                this.myStack = new Stack(stackSize);
+                return this.myStack;
             }
-            
+
+            public void Pushes()
+            {
+                for (int item = 0; item < 100; item ++ )
+                {
+                    try {
+                        this.myStack.push(item);
+                    } catch (System.StackOverflowException) {
+                        System.Console.WriteLine("Stack Owerflow!");
+                        break;
+                    }
+                }
+            }
+
+            public void Pops()
+            {
+                while (true)
+                    {
+                        try {
+                            System.Console.WriteLine(this.myStack.pop());
+                        } catch (System.ArgumentOutOfRangeException) 
+                        {
+                            System.Console.WriteLine("The stack is empty!");
+                            break;
+                        }
+                    }
+            }
+
         }
     }
 }
