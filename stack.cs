@@ -17,7 +17,7 @@ namespace stack
             if (stackList.Count < this.stackSize)
             {
                 stackList.Add(item);
-                System.Console.WriteLine(item + " has added to the stack");
+                System.Console.Write(item + ", ");
             } else 
             {
                 throw new System.StackOverflowException();

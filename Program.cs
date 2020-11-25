@@ -7,27 +7,28 @@ namespace cs_go
     {
         static void Main(string[] args)
         {
+            Console.Clear();
             Start start = new Start();
             Stack myStack = start.Init();
             start.Pushes();
-            System.Console.WriteLine();
-            System.Console.WriteLine("Reading from stack:");
-            System.Console.WriteLine();
             start.Pops();
         }
 
         class Start{
-
             private Stack myStack;
             public Stack Init()
             {
                 int stackSize;
                 while (true){
                     try {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     System.Console.WriteLine("Please enter the size of the stack: ");
+                    Console.ForegroundColor = ConsoleColor.White;
                     stackSize = Convert.ToInt32(System.Console.ReadLine());
                     } catch (System.FormatException) {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         System.Console.WriteLine("Wrong number!");
+                        Console.ForegroundColor = ConsoleColor.White;
                         continue;
                     }
                     break;
@@ -38,6 +39,9 @@ namespace cs_go
 
             public void Pushes()
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine("--------------- Adding to stack: -----------------");
+                Console.ForegroundColor = ConsoleColor.White;
                 for (int item = 0; item < 100; item ++ )
                 {
                     try {
@@ -51,10 +55,13 @@ namespace cs_go
 
             public void Pops()
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine("--------------- Reading from stack: -----------------");
+                Console.ForegroundColor = ConsoleColor.White;
                 while (true)
                     {
                         try {
-                            System.Console.WriteLine(this.myStack.pop());
+                            System.Console.Write(this.myStack.pop() + ", ");
                         } catch (System.ArgumentOutOfRangeException) 
                         {
                             System.Console.WriteLine("The stack is empty!");
