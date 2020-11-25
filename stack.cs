@@ -17,7 +17,6 @@ namespace stack
             if (stackList.Count < this.stackSize)
             {
                 stackList.Add(item);
-                System.Console.Write(item + ", ");
             } else 
             {
                 throw new System.StackOverflowException();
@@ -28,7 +27,6 @@ namespace stack
             stackList.RemoveAt(stackList.Count-1);
             return output;
         }
-        
     }
 }
 

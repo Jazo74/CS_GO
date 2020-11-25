@@ -9,14 +9,14 @@ namespace cs_go
         {
             Console.Clear();
             Start start = new Start();
-            Stack myStack = start.Init();
+            start.Init();
             start.Pushes();
             start.Pops();
         }
 
         class Start{
             private Stack myStack;
-            public Stack Init()
+            public void Init()
             {
                 int stackSize;
                 while (true){
@@ -34,20 +34,23 @@ namespace cs_go
                     break;
                 }
                 this.myStack = new Stack(stackSize);
-                return this.myStack;
             }
 
             public void Pushes()
             {
                 Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine();
                 System.Console.WriteLine("--------------- Adding to stack: -----------------");
                 Console.ForegroundColor = ConsoleColor.White;
                 for (int item = 0; item < 100; item ++ )
                 {
                     try {
                         this.myStack.push(item);
+                        System.Console.Write(item + ", ");
                     } catch (System.StackOverflowException) {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         System.Console.WriteLine("Stack Owerflow!");
+                        Console.ForegroundColor = ConsoleColor.White;
                         break;
                     }
                 }
@@ -56,6 +59,7 @@ namespace cs_go
             public void Pops()
             {
                 Console.ForegroundColor = ConsoleColor.Green;
+                System.Console.WriteLine();
                 System.Console.WriteLine("--------------- Reading from stack: -----------------");
                 Console.ForegroundColor = ConsoleColor.White;
                 while (true)
@@ -64,7 +68,9 @@ namespace cs_go
                             System.Console.Write(this.myStack.pop() + ", ");
                         } catch (System.ArgumentOutOfRangeException) 
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             System.Console.WriteLine("The stack is empty!");
+                            Console.ForegroundColor = ConsoleColor.White;
                             break;
                         }
                     }
