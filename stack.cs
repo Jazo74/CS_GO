@@ -2,14 +2,12 @@ using System.Collections.Generic;
 
 namespace stack
 {
-    class Stack
+    public class Stack
     {
-        public Stack(){}
-
         public Stack(int stackSize){
             this.stackSize = stackSize;
         }
-        private int stackSize = 1000;
+        private int stackSize;
         private List<int> stackList = new List<int>();
 
         public void push(int item)

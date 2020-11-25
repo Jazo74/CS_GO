@@ -8,10 +8,18 @@ namespace cs_go
         static void Main(string[] args)
         {
             Console.Clear();
+
             Start start = new Start();
             start.Init();
             start.Pushes();
             start.Pops();
+
+            Console.ReadKey();
+            
+            LinkedListReader myLL = new LinkedListReader();
+            myLL.ReadAll();
+            
+            Console.ReadKey();
         }
 
         class Start{
@@ -76,6 +84,29 @@ namespace cs_go
                     }
             }
 
+        }
+    }
+
+    public class LinkedListReader{
+
+        LinkedL myLinkedL;
+        public LinkedListReader(){
+            Console.ForegroundColor = ConsoleColor.Green;
+            System.Console.WriteLine();
+            System.Console.WriteLine("Creating sample linked list...");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            this.myLinkedL = new LinkedL();
+        }
+        public void ReadAll(){
+            Console.ForegroundColor = ConsoleColor.Green;
+            System.Console.WriteLine();
+            System.Console.WriteLine("----------- Reading through the linked list: ----------");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            this.myLinkedL.ReadAsc();
+            System.Console.WriteLine();
+            this.myLinkedL.ReadDesc();
         }
     }
 }
