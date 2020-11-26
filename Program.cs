@@ -19,6 +19,8 @@ namespace cs_go
             LinkedListReader myLL = new LinkedListReader();
             myLL.ReadAll();
             Console.ReadKey();
+
+            //StackST singleton = StackST.getSingleStack(5);
         }
 
         class Start{
