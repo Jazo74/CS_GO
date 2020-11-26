@@ -8,17 +8,16 @@ namespace cs_go
         static void Main(string[] args)
         {
             Console.Clear();
-
+            //  Stack part
             Start start = new Start();
             start.Init();
             start.Pushes();
             start.Pops();
-
             Console.ReadKey();
             
+            // Linked list part
             LinkedListReader myLL = new LinkedListReader();
             myLL.ReadAll();
-            
             Console.ReadKey();
         }
 
@@ -26,6 +25,7 @@ namespace cs_go
             private IStack myStack;
             public void Init()
             {
+                // Initializing the "stack"
                 int stackSize;
                 while (true){
                     try {
@@ -45,6 +45,7 @@ namespace cs_go
                 this.myStack = myStack;
             }
 
+            // Adding sample items to the "stack"
             public void Pushes()
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -64,7 +65,7 @@ namespace cs_go
                     }
                 }
             }
-
+            // Reading from the stack till it has items
             public void Pops()
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -84,13 +85,14 @@ namespace cs_go
                         }
                     }
             }
-
         }
     }
 
     class LinkedListReader{
 
         LinkedL myLinkedL;
+
+        // making a linked list
         public LinkedListReader(){
             Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine();
@@ -99,6 +101,8 @@ namespace cs_go
 
             this.myLinkedL = new LinkedL();
         }
+
+        // Reading through the linked list. (first forward, then backward)
         public void ReadAll(){
             Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine();
