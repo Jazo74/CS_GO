@@ -3,37 +3,47 @@ using System.Collections.Generic;
 namespace cs_go
 
 {
-    public class LinkedL{
+    class LinkedL{
+
+        // The linked list
         private LinkedList<int> myList = new LinkedList<int>();
 
-        public LinkedL(){
-            for (int value = 0; value < 55; value ++){
+        // Constructor, make a sample linked list
+        public LinkedL(){ 
+            for (int value = 0; value < 50; value ++){
                 this.AddItem(value);
             }
         }
-        private void AddItem(int item){
+
+        // Add a new node to the linked list
+        private void AddItem(int item){ 
             LinkedListNode<int> node = new LinkedListNode<int>(item);
             myList.AddLast(node);
         }
+
+        // starts the reading with the first node
         public void ReadAsc(){
-            ReadNext(this.myList.First);
+            ReadForward(this.myList.First);
         }
 
+        // starts the reading with the last node
         public void ReadDesc(){
-            ReadPrevious(this.myList.Last);
+            ReadBackward(this.myList.Last);
         }
 
-        private void ReadNext(LinkedListNode<int> node){
+        // recursive forward reading
+        private void ReadForward(LinkedListNode<int> node){
             System.Console.Write(node.Value + ", ");
             if (node.Next != null){
-                ReadNext(node.Next);
+                ReadForward(node.Next);
             }
         }
 
-        private void ReadPrevious(LinkedListNode<int> node){
+        // recursive backward reading
+        private void ReadBackward(LinkedListNode<int> node){
             System.Console.Write(node.Value + ", ");
             if (node.Previous != null){
-                ReadPrevious(node.Previous);
+                ReadBackward(node.Previous);
             }
         }
     }

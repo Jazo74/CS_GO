@@ -23,7 +23,7 @@ namespace cs_go
         }
 
         class Start{
-            private Stack myStack;
+            private IStack myStack;
             public void Init()
             {
                 int stackSize;
@@ -41,7 +41,8 @@ namespace cs_go
                     }
                     break;
                 }
-                this.myStack = new Stack(stackSize);
+                IStack myStack = new Stack(stackSize); 
+                this.myStack = myStack;
             }
 
             public void Pushes()
@@ -87,7 +88,7 @@ namespace cs_go
         }
     }
 
-    public class LinkedListReader{
+    class LinkedListReader{
 
         LinkedL myLinkedL;
         public LinkedListReader(){
@@ -101,11 +102,15 @@ namespace cs_go
         public void ReadAll(){
             Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine();
-            System.Console.WriteLine("----------- Reading through the linked list: ----------");
+            System.Console.WriteLine("----------- Reading forward through the linked list: ----------");
             Console.ForegroundColor = ConsoleColor.White;
-
             this.myLinkedL.ReadAsc();
+
+            Console.ForegroundColor = ConsoleColor.Green;
             System.Console.WriteLine();
+            System.Console.WriteLine();
+            System.Console.WriteLine("----------- Reading backward through the linked list: ----------");
+            Console.ForegroundColor = ConsoleColor.White;
             this.myLinkedL.ReadDesc();
         }
     }
